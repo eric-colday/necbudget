@@ -1,13 +1,13 @@
 "use client"
 
-import { Transaction } from '../../../type'
+import { Transaction } from '@/type'
 import { useUser } from '@clerk/nextjs'
 import React, { useEffect, useState } from 'react'
 import { getTransactionsByEmailAndPeriod } from '../actions'
 import Wrapper from '../components/Wrapper'
 import TransactionItem from '../components/TransactionItem'
 
-const page = () => {
+const Page = () => {
 
   const { user } = useUser()
   const [transactions, setTransactions] = useState<Transaction[]>([])
@@ -73,4 +73,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

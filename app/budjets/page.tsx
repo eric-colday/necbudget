@@ -10,7 +10,7 @@ import Link from "next/link";
 import BudgetItem from "../components/BudgetItem";
 import { Landmark } from "lucide-react";
 
-const page = () => {
+const Page = () => {
   const { user } = useUser();
   const [budgetName, setBudgetName] = useState<string>("");
   const [budgetAmount, setBudgetAmount] = useState<string>("");
@@ -157,4 +157,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
