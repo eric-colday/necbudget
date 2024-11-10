@@ -1,7 +1,7 @@
 "use client"
 
 import { useUser } from '@clerk/nextjs';
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { getLastBudgets, getLastTransactions, getReachedBudgets, getTotalTransactionAmount, getTotalTransactionCount, getUserBudgetData } from '../actions';
 import Wrapper from '../components/Wrapper';
 import { CircleDollarSign, Landmark, PiggyBank } from 'lucide-react';
@@ -22,7 +22,7 @@ const Page = () => {
     const [budgets, setBudgets] = useState<Budget[]>([]);
 
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         setIsLoading(true)
         try {
             const email = user?.primaryEmailAddress?.emailAddress as string
@@ -40,16 +40,15 @@ const Page = () => {
                 setTransactions(lastTransactions)
                 setBudgets(lastBudgets)
                 setIsLoading(false)
-
             }
         } catch (error) {
             console.error("Erreur lors de la récupération des données:", error);
         }
-    }
+    }, [user]);
 
     useEffect(() => {
         fetchData()
-    }, [user])
+    }, [user, fetchData]);
 
     return (
         <Wrapper >

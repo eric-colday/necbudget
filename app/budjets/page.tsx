@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Wrapper from "../components/Wrapper";
 import { useUser } from "@clerk/nextjs";
 import EmojiPicker from "emoji-picker-react";
@@ -61,7 +61,7 @@ const Page = () => {
   };
 
 
-  const fetchBudgets = async () => {
+  const fetchBudgets = useCallback(async () => {
     if(user?.primaryEmailAddress?.emailAddress){
       try {
         const userBudgets = await  getBudgetsByUser(user?.primaryEmailAddress?.emailAddress)
@@ -70,11 +70,11 @@ const Page = () => {
         setNotification(`"Erreur lors de la récupération des budgets": ${error}`);
       }
     }
-  }
+  }, [user?.primaryEmailAddress?.emailAddress]);
 
   useEffect(() => { 
     fetchBudgets()
-  } , [user?.primaryEmailAddress?.emailAddress])
+  } , [fetchBudgets])
 
 
   return (
