@@ -74,7 +74,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchBudgets()
-  } , [user?.primaryEmailAddress?.emailAddress, fetchBudgets])
+  } , [user?.primaryEmailAddress?.emailAddress])
 
 
   return (
@@ -103,7 +103,7 @@ const Page = () => {
               ✕
             </button>
           </form>
-          <h3 className="font-bold text-lg">Création d'un budjets</h3>
+          <h3 className="font-bold text-lg">Création d&apos;un budjets</h3>
           <p className="py-4">Permet de controler ces depenses facilement</p>
           <div className="w-full flex flex-col">
             <input

@@ -28,7 +28,7 @@ export default function Home() {
                 href={"/sign-up"}
                 className="btn btn-sm md:btn-md ml-2 btn-accent"
               >
-                S'inscrire
+                S&apos;inscrire
               </Link>
             </div>
 
