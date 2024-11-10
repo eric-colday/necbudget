@@ -72,7 +72,7 @@ const Page = () => {
     }
   }
 
-  useEffect(() => {
+  useEffect(() => { 
     fetchBudgets()
   } , [user?.primaryEmailAddress?.emailAddress])
 
