@@ -56,7 +56,7 @@ const Page = () => {
       setShowEmojiPicker(false)
 
     } catch (error) {
-      setNotification(`Erreur : ${error}`)
+      setNotification(`"Erreur" : ${error}`)
     }
   };
 
@@ -67,14 +67,14 @@ const Page = () => {
         const userBudgets = await  getBudgetsByUser(user?.primaryEmailAddress?.emailAddress)
         setBudgets(userBudgets)
       } catch (error) {
-        setNotification(`Erreur lors de la récupération des budgets: ${error}`);
+        setNotification(`"Erreur lors de la récupération des budgets": ${error}`);
       }
     }
   }
 
   useEffect(() => {
     fetchBudgets()
-  } , [user?.primaryEmailAddress?.emailAddress])
+  } , [user?.primaryEmailAddress?.emailAddress, fetchBudgets])
 
 
   return (
